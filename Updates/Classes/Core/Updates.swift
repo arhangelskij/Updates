@@ -153,6 +153,10 @@ public class Updates {
         }
     }()
     
+    public static var languageCode: String? = {
+        return Locale.current.languageCode
+    }()
+    
     public internal(set) static var isFirstLaunchFollowingInstall: Bool = false
     
     public internal(set) static var isFirstLaunchFollowingUpdate: Bool = false

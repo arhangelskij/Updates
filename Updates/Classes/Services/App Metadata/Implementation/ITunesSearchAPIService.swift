@@ -17,7 +17,11 @@ struct ITunesSearchAPIService: AppMetadataService {
     
     init?(bundleIdentifier: String, countryCode: String) {
         let lowercasedCountryCode = countryCode.lowercased()
-        let urlString = "http://itunes.apple.com/lookup?bundleId=\(bundleIdentifier)&country=\(lowercasedCountryCode)"
+        var  urlString = "http://itunes.apple.com/lookup?bundleId=\(bundleIdentifier)&country=\(lowercasedCountryCode)"
+        
+        if let languageCode = Updates.languageCode {
+            urlString.append("&lang=\(languageCode)")
+        }
         guard let url = URL(string: urlString) else {
             return nil
         }
